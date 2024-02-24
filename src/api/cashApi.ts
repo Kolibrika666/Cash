@@ -1,8 +1,8 @@
 export type CashType = {
   id?: string;
   date: string;
-  cash: number;
   target: string;
+  cash: number;
 };
 
 export const doPostIncome = async (cash: number, target: string) => {
