@@ -3,7 +3,6 @@ import { CashType } from "../../api/cashApi";
 
 type initialStateType = {
   cashList: CashType[];
-  balance: number;
   totalIncome: number;
   income: number[];
   totalExpenses: number;
@@ -11,7 +10,6 @@ type initialStateType = {
 };
 const initialState: initialStateType = {
   cashList: [],
-  balance: 0,
   totalIncome: 0,
   income: [],
   totalExpenses: 0,

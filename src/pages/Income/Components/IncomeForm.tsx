@@ -13,10 +13,6 @@ function IncomeForm() {
     dispatch(setIncomeList(data));
   };
 
-  useEffect(() => {
-    getIncomeList();
-  }, []);
-
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     getIncome(cash, target);
