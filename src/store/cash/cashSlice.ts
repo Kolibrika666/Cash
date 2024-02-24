@@ -2,10 +2,16 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CashType } from "../../api/cashApi";
 
 type initialStateType = {
-  cash: CashType[];
+  cashList: CashType[];
+  balance: number;
+  totalIncome: number[];
+  income: number;
 };
 const initialState: initialStateType = {
-  cash: [],
+  cashList: [],
+  balance: 0,
+  totalIncome: [],
+  income: 0,
 };
 
 const cashSlice = createSlice({
@@ -13,11 +19,16 @@ const cashSlice = createSlice({
   initialState: initialState,
   reducers: {
     setCashList(state, action: PayloadAction<CashType[]>) {
-      state.cash.push(action.payload);
+      state.cashList = action.payload;
+    },
+
+    setCashSum(state, action: PayloadAction<number>) {
+      state.totalIncome.push(action.payload);
+      state.totalIncome.reduce((acc, item) => acc + item, 0);
     },
   },
 });
 
-export const { setCashList } = cashSlice.actions;
+export const { setCashList, setCashSum } = cashSlice.actions;
 
 export default cashSlice.reducer;

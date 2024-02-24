@@ -2,10 +2,10 @@ export type CashType = {
   id?: string;
   date: string;
   target: string;
-  cash: number;
+  cash: number | string;
 };
 
-export const doPostIncome = async (cash: number, target: string) => {
+export const getIncome = async (cash: number, target: string) => {
   const response = await fetch(
     "https://finanse-7029e-default-rtdb.europe-west1.firebasedatabase.app/income.json",
     {
