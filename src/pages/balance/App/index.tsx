@@ -1,15 +1,20 @@
+import { useAppSelector } from "../../../store";
+
 function Balance() {
+  const sumExpenses = useAppSelector((store) => store.cash.totalExpenses);
+  const sumIncome = useAppSelector((store) => store.cash.totalIncome);
+
   return (
     <section>
       <article>
-        Доходы за всё время <span>1000</span>
+        Доходы за всё время <span>{sumIncome}</span>
       </article>
       <article>
         Расходы за всё время
-        <span>100</span>
+        <span>{sumExpenses}</span>
       </article>
       <article>
-        Итог <span>1000</span>
+        Итог <span>{sumIncome + sumExpenses}</span>
       </article>
     </section>
   );

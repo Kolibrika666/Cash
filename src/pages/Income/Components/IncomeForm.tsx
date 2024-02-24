@@ -1,28 +1,25 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../../store";
 import { getIncome, getIncomeData } from "../../../api/cashApi";
-import { setCashList, setCashSum } from "../../../store/cash/cashSlice";
+import { setIncomeList } from "../../../store/cash/cashSlice";
 
 function IncomeForm() {
   const [cash, setCash] = useState(0);
   const [target, setTarget] = useState("");
+  const dispatch = useAppDispatch();
 
   const getIncomeList = async () => {
     const data = await getIncomeData();
-
-    dispatch(setCashList(data));
+    dispatch(setIncomeList(data));
   };
 
   useEffect(() => {
     getIncomeList();
   }, []);
 
-  const dispatch = useAppDispatch();
-
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     getIncome(cash, target);
-    dispatch(setCashSum(cash));
     getIncomeList();
   };
 

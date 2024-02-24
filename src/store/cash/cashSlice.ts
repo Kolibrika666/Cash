@@ -4,31 +4,35 @@ import { CashType } from "../../api/cashApi";
 type initialStateType = {
   cashList: CashType[];
   balance: number;
-  totalIncome: number[];
-  income: number;
+  totalIncome: number;
+  income: number[];
+  totalExpenses: number;
+  expenses: number[];
 };
 const initialState: initialStateType = {
   cashList: [],
   balance: 0,
-  totalIncome: [],
-  income: 0,
+  totalIncome: 0,
+  income: [],
+  totalExpenses: 0,
+  expenses: [],
 };
 
 const cashSlice = createSlice({
   name: "cash",
   initialState: initialState,
   reducers: {
-    setCashList(state, action: PayloadAction<CashType[]>) {
+    setIncomeList(state, action: PayloadAction<CashType[]>) {
       state.cashList = action.payload;
-    },
-
-    setCashSum(state, action: PayloadAction<number>) {
-      state.totalIncome.push(action.payload);
-      state.totalIncome.reduce((acc, item) => acc + item, 0);
+      state.cashList.reverse();
+      state.income = state.cashList.map((item) => +item.cash);
+      state.totalIncome = state.income.reduce((acc, item) => acc + item, 0);
+      // console.log(state.income);
+      // console.log(state.totalIncome);
     },
   },
 });
 
-export const { setCashList, setCashSum } = cashSlice.actions;
+export const { setIncomeList } = cashSlice.actions;
 
 export default cashSlice.reducer;

@@ -4,7 +4,6 @@ import IncomeItem from "../Components/IncomeItem";
 
 function Income() {
   const incomeList = useAppSelector((store) => store.cash.cashList);
-
   return (
     <>
       <IncomeForm />
