@@ -10,6 +10,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
+        <Route index element={<Balance />} />
           <Route path="balance" element={<Balance />} />
           <Route path="income" element={<Income />} />
           <Route path="expenses" element={<Expenses />} />
